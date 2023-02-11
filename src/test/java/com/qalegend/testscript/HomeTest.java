@@ -21,7 +21,7 @@ public class HomeTest extends Base {
     LoginPage login;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
     @Test(priority = 1,enabled = true,description = "TC006_Verify home page title",groups = {"Regression"})
-    public void TC006_verifyHomePageTitle(){
+    public void TC006_verifyHomePageTitle01(){
         extentTest.get().assignCategory("Regression");
         login=new LoginPage(driver);
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
