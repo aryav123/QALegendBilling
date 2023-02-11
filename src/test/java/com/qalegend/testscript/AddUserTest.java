@@ -1,0 +1,45 @@
+package com.qalegend.testscript;
+
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import com.qalegend.automationcore.Base;
+import com.qalegend.constants.ErrorMessages;
+import com.qalegend.constants.ExtentLogMessage;
+import com.qalegend.listeners.TestListener;
+import com.qalegend.pages.*;
+import com.qalegend.utilities.ExcelUtility;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class AddUserTest extends Base {
+    LoginPage login;
+    HomePage home;
+    UserManagementPage userManagement;
+    UsersPage user;
+    AddUserPage adduser;
+    ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
+    @Test(priority = 1, description = "TC015 verify Add user page title", groups = {"Regression"})
+    public void TC015_verifyAddUserTitle() {
+        extentTest.get().assignCategory("Regression");
+        List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
+        List<ArrayList<String>> addUserData = ExcelUtility.excelDataReader("AddUser");
+        String expAddUserPageTitle = addUserData.get(1).get(3);
+        String UserName = loginData.get(1).get(1);
+        String Password = loginData.get(1).get(2);
+        login = new LoginPage(driver);
+        login.enterUserName(UserName);
+        login.enterUserPassword(Password);
+        login.rememberMeCheckBoxClick();
+        home = login.clickLoginButton();
+        home.clickOnEndTourButton();
+        userManagement = home.clickOnTheUserManagementMenu();
+        user = userManagement.clickOnUsersMenu();
+        adduser=user.clickOnAddButton();
+        String actualAddUserPageTitle = adduser.getAddUserPageTitle();
+        Assert.assertEquals(actualAddUserPageTitle, expAddUserPageTitle, ErrorMessages.TITLE_FAILURE_MESSAGE);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.USERS_TITLE_VALIDATION_MESSAGE);
+    }
+}

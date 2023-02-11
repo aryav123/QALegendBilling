@@ -4,9 +4,11 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.qalegend.automationcore.Base;
 import com.qalegend.constants.ErrorMessages;
+import com.qalegend.constants.ExtentLogMessage;
 import com.qalegend.listeners.TestListener;
 import com.qalegend.pages.HomePage;
 import com.qalegend.pages.LoginPage;
+import com.qalegend.utilities.DateUtility;
 import com.qalegend.utilities.ExcelUtility;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -18,9 +20,9 @@ public class HomeTest extends Base {
     HomePage home;
     LoginPage login;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
-    @Test(priority = 1,enabled = true,description = "TC006_Verify home page title",groups = {"Smoke"})
+    @Test(priority = 1,enabled = true,description = "TC006_Verify home page title",groups = {"Regression"})
     public void TC006_verifyHomePageTitle(){
-        extentTest.get().assignCategory("Smoke");
+        extentTest.get().assignCategory("Regression");
         login=new LoginPage(driver);
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
         String userName=data.get(1).get(1);
@@ -34,7 +36,21 @@ public class HomeTest extends Base {
         home.getHomePageTitle();
         extentTest.get().log(Status.PASS,"Expected username match with actual username");
     }
-    @Test
+    @Test(priority = 1,enabled = true,description = "TC007_Verify date is displayed in home page",groups = {"Regression"})
     public void TC007_verifyDateIsDisplayed(){
+        extentTest.get().assignCategory("Regression");
+        List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
+        String userName = loginData.get(1).get(1);
+        String userPassword = loginData.get(1).get(2);
+        login = new LoginPage(driver);
+        login.enterUserName(userName);
+        login.enterUserPassword(userPassword);
+        home = login.clickLoginButton();
+        home.clickOnEndTourButton();
+        String actualDate = home.getDate();
+        String expDate = DateUtility.getSystemDate();
+        extentTest.get().log(Status.PASS, ExtentLogMessage.DATE_DISPLAYED_IN_HOME_PAGE);
+        Assert.assertEquals(actualDate, expDate, ErrorMessages.INVALID_DATE_MESSAGE);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.HOME_DATE_VALIDATION_MESSAGE);
     }
 }

@@ -63,4 +63,8 @@ public class LoginPage extends TestHelper {
         page.clickOnElement(forgotPasswordLink);
         return new ResetPage(driver);
     }
+    public Boolean rememberMeCheckBoxClick(){
+        Boolean status= page.isSelected(rememberMeCheckBox);
+        return status;
+    }
 }

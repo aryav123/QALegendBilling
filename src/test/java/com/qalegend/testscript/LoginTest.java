@@ -20,9 +20,9 @@ public class LoginTest extends Base {
     HomePage home;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
 
-    @Test(priority = 1, description = "TC001_Verify Login page title",groups = {"Smoke"})
+    @Test(priority = 1, description = "TC001_Verify Login page title",groups = {"Regression"})
     public void TC001_verifyLoginPageTitle() {
-        extentTest.get().assignCategory("Smoke");
+        extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
         String expHomePageTitle = data.get(1).get(0);
         login = new LoginPage(driver);
@@ -48,9 +48,9 @@ public class LoginTest extends Base {
         extentTest.get().log(Status.PASS, "Expected username match with actual username");
     }
 
-    @Test(priority = 1, description = "TC003_Verify invalid login",groups = {"Smoke"})
+    @Test(priority = 1, description = "TC003_Verify invalid login",groups = {"Regression"})
     public void TC003_verifyInValidLoginErrorMessage() {
-        extentTest.get().assignCategory("Smoke");
+        extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
         String fName = RandomUtility.getfName();
         String password = fName + "@123";
@@ -64,9 +64,9 @@ public class LoginTest extends Base {
         extentTest.get().log(Status.PASS, "Expected username match with actual username");
     }
 
-    @Test(priority = 1, description = "TC004_Verify click on remember me check box",groups = {"Sanity"})
+    @Test(priority = 1, description = "TC004_Verify click on remember me check box",groups = {"Regression"})
     public void TC004_verifyClickOnRememberMeCheckBox() {
-        extentTest.get().assignCategory("Sanity");
+        extentTest.get().assignCategory("Regression");
         login = new LoginPage(driver);
         login.clickOnRememberMeButton();
     }

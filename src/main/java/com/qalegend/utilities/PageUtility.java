@@ -169,4 +169,13 @@ public class PageUtility {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView();", target);
     }
+
+    public Boolean isSelected(WebElement target) {
+        boolean selectedStatus = target.isSelected();
+        return selectedStatus;
+    }
+    public boolean isDisplayed(WebElement target) {
+        boolean displayStatus = target.isDisplayed();
+        return displayStatus;
+    }
 }

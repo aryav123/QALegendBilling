@@ -4,14 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ed989ba4-2597-4796-8471-6199a9d51056" name="Changes" comment="" />
+    <list default="true" id="ed989ba4-2597-4796-8471-6199a9d51056" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/crossbrowser_testng.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jenkins_testng.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/constants/ExtentLogMessage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/pages/AddUserPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/pages/SignoutPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/pages/UserManagementPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/pages/UsersPage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/utilities/DateUtility.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/AddUserTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/SignoutTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/UserManagementTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/UsersTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grouping_testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/grouping_testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qalegend/constants/ErrorMessages.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/constants/ErrorMessages.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qalegend/pages/HomePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/pages/HomePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qalegend/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/pages/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/qalegend/utilities/PageUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qalegend/utilities/PageUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TestData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TestData.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qalegend/automationcore/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qalegend/automationcore/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/HomeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/HomeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/LoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/ResetTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qalegend/testscript/ResetTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -29,9 +66,112 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true"
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Arya Vijayan/IdeaProjects/QALegendBilling",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Arya Vijayan\IdeaProjects\QALegendBilling" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.C:/Users/Arya Vijayan/IdeaProjects/QALegendBilling/grouping_testng.xml">
+    <configuration name="C:/Users/Arya Vijayan/IdeaProjects/QALegendBilling/grouping_testng.xml" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QALegendBilling" />
+      <option name="SUITE_NAME" value="$PROJECT_DIR$/grouping_testng.xml" />
+      <option name="TEST_OBJECT" value="SUITE" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HomeTest.TC006_verifyHomePageTitle" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QALegendBilling" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qalegend.testscript.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qalegend.testscript" />
+      <option name="MAIN_CLASS_NAME" value="com.qalegend.testscript.HomeTest" />
+      <option name="METHOD_NAME" value="TC006_verifyHomePageTitle" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HomeTest.TC007_verifyDateIsDisplayed" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QALegendBilling" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qalegend.testscript.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qalegend.testscript" />
+      <option name="MAIN_CLASS_NAME" value="com.qalegend.testscript.HomeTest" />
+      <option name="METHOD_NAME" value="TC007_verifyDateIsDisplayed" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest.TC004_verifyClickOnRememberMeCheckBox" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QALegendBilling" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qalegend.testscript.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qalegend.testscript" />
+      <option name="MAIN_CLASS_NAME" value="com.qalegend.testscript.LoginTest" />
+      <option name="METHOD_NAME" value="TC004_verifyClickOnRememberMeCheckBox" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ResetTest.TC005_verifyClickOnRememberMeCheckBox" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="QALegendBilling" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qalegend.testscript.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qalegend.testscript" />
+      <option name="MAIN_CLASS_NAME" value="com.qalegend.testscript.ResetTest" />
+      <option name="METHOD_NAME" value="TC005_verifyClickOnRememberMeCheckBox" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.C:/Users/Arya Vijayan/IdeaProjects/QALegendBilling/grouping_testng.xml" />
+        <item itemvalue="TestNG.HomeTest.TC007_verifyDateIsDisplayed" />
+        <item itemvalue="TestNG.HomeTest.TC006_verifyHomePageTitle" />
+        <item itemvalue="TestNG.ResetTest.TC005_verifyClickOnRememberMeCheckBox" />
+        <item itemvalue="TestNG.LoginTest.TC004_verifyClickOnRememberMeCheckBox" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -42,5 +182,16 @@
       <updated>1675325506586</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/qalegend/testscript/HomeTest.java</url>
+          <line>33</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

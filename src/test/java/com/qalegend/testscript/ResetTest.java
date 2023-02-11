@@ -19,9 +19,9 @@ public class ResetTest extends Base {
     ResetPage reset;
     LoginPage login;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
-    @Test(priority = 1,enabled = true,description = "TC005_Verify click on forgot password link",groups = {"Smoke"})
+    @Test(priority = 1,enabled = true,description = "TC005_Verify click on forgot password link",groups = {"Regression"})
     public void TC005_verifyClickForgotPasswordLink(){
-        extentTest.get().assignCategory("Smoke");
+        extentTest.get().assignCategory("Regression");
         login=new LoginPage(driver);
         reset = login.clickForgotPasswordButton();
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("ResetPage");

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="com.qalegend.listeners.TestListener"/>
+    </listeners>
+    <test name="Parameter testing - Cross browser testing">
+        <parameter name="browser" value="chrome"/>
+        <classes>
+            <class name="com.qalegend.testscript.HomeTest">
+            <methods>
+                <include name="TC001_verifyLoginPageTitle"/>
+                <exclude name="TC_002_verifySubscribeEmailMessage"/>
+            </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
