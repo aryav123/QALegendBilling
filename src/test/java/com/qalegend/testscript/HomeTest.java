@@ -21,7 +21,7 @@ public class HomeTest extends Base {
     LoginPage login;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
     @Test(priority = 1,enabled = true,description = "TC006_Verify home page title",groups = {"Regression"})
-    public void TC006_verifyHomePageTitle01(){
+    public void TC006_verifyHomePageTitle(){
         extentTest.get().assignCategory("Regression");
         login=new LoginPage(driver);
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
@@ -32,13 +32,13 @@ public class HomeTest extends Base {
         home = login.clickLoginButton();
         String actUserName=home.getUserAccountNameText();
         String expUserName=data.get(1).get(3);
-        Assert.assertEquals(actUserName,expUserName, ErrorMessages.USERNAME_FAILURE_MESSAGE);
         home.getHomePageTitle();
-        extentTest.get().log(Status.PASS,"Expected username match with actual username");
+        Assert.assertEquals(actUserName,expUserName, ErrorMessages.TITLE_FAILURE_MESSAGE);
+        extentTest.get().log(Status.PASS,ExtentLogMessage.TITLE_MATCH_WITH_ACTUAL_TITLE);
     }
-    @Test(priority = 1,enabled = true,description = "TC007_Verify date is displayed in home page",groups = {"Regression"})
+    @Test(priority = 1,enabled = true,description = "TC007_Verify date is displayed in home page",groups = {"Sanity"})
     public void TC007_verifyDateIsDisplayed(){
-        extentTest.get().assignCategory("Regression");
+        extentTest.get().assignCategory("Sanity");
         List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
         String userName = loginData.get(1).get(1);
         String userPassword = loginData.get(1).get(2);
@@ -46,7 +46,6 @@ public class HomeTest extends Base {
         login.enterUserName(userName);
         login.enterUserPassword(userPassword);
         home = login.clickLoginButton();
-        home.clickOnEndTourButton();
         String actualDate = home.getDate();
         String expDate = DateUtility.getSystemDate();
         extentTest.get().log(Status.PASS, ExtentLogMessage.DATE_DISPLAYED_IN_HOME_PAGE);

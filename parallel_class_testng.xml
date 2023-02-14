@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Jenkins Suite">
+<suite name="Parallel testing Suite">
     <listeners>
         <listener class-name="com.qalegend.listeners.TestListener"/>
     </listeners>
-    <test name="Parameter testing - Grouping">
+    <test name="parallel testing - Class" parallel="classes" thread-count="2">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.qalegend.testscript.LoginTest">
+            <methods>
+                <include name="TC001_verifyLoginPageTitle"/>
+                <include name="TC002_verifyValidLogin"/>
+            </methods>
+            </class>
+            <class name="com.qalegend.testscript.HomeTest">
                 <methods>
-                    <include name="TC001_verifyLoginPageTitle"/>
-                    <include name="TC002_verifyValidLogin"/>
+                    <include name="TC006_verifyHomePageTitle"/>
                 </methods>
             </class>
         </classes>

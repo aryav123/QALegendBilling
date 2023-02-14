@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Jenkins Suite">
+<suite name="Parallel testing Suite">
     <listeners>
         <listener class-name="com.qalegend.listeners.TestListener"/>
     </listeners>
-    <test name="Parameter testing - Grouping">
+    <test name="parallel testing - Tests" parallel="tests" thread-count="2">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="com.qalegend.testscript.LoginTest">

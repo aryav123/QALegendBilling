@@ -37,9 +37,9 @@ public class Base {
         }
     }
     @BeforeMethod(alwaysRun = true)
-//    @Parameters({"browser"})
-    public void setUP(){
-        String browser= prop.getProperty("browser");
+    @Parameters({"browser"})
+    public void setUP(String browser){
+//        String browser= prop.getProperty("browser");
         String url= prop.getProperty("url");
         driver = DriverFactory.testInitialization(browser);
         driver.get(url);

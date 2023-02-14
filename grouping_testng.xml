@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="Grouping testing">
     <listeners>
         <listener class-name="com.qalegend.listeners.TestListener"/>
     </listeners>
-    <test name="Parameter testing - Grouping">
+    <test name="Parameter testing - Grouping" parallel="classes" thread-count="3">
         <parameter name="browser" value="chrome"/>
         <groups>
             <run>
                 <include name="Regression"/>
-<!--                <exclude name="Sanity"/>-->
-<!--                <include name="Smoke"/>-->
+                <exclude name="Sanity"/>
+                <include name="Smoke"/>
             </run>
         </groups>
         <classes>
-<!--            <class name="com.qalegend.testscript.HomeTest"/>-->
-<!--            <class name="com.qalegend.testscript.LoginTest"/>-->
-<!--            <class name="com.qalegend.testscript.ResetTest"/>-->
-<!--            <class name="com.qalegend.testscript.SignoutTest"/>-->
-<!--            <class name="com.qalegend.testscript.UserManagementTest"/>-->
-<!--            <class name="com.qalegend.testscript.UsersTest"/>-->
+            <class name="com.qalegend.testscript.HomeTest"/>
+            <class name="com.qalegend.testscript.LoginTest"/>
+            <class name="com.qalegend.testscript.ResetTest"/>
+            <class name="com.qalegend.testscript.SignoutTest"/>
+            <class name="com.qalegend.testscript.UserManagementTest"/>
+            <class name="com.qalegend.testscript.UsersTest"/>
             <class name="com.qalegend.testscript.AddUserTest"/>
+            <class name="com.qalegend.testscript.EditUserTest"/>
+            <class name="com.qalegend.testscript.ViewUsersTest"/>
+            <class name="com.qalegend.testscript.RolesTest"/>
         </classes>
     </test>
 </suite>

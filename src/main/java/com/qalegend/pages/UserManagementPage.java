@@ -36,4 +36,8 @@ public class UserManagementPage extends TestHelper {
         page.clickOnElement(usersMenu);
         return new UsersPage(driver);
     }
+    public RolesPage clickOnRolesMenu(){
+        page.clickOnElement(rolesMenu);
+        return new RolesPage(driver);
+    }
 }

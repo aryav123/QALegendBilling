@@ -4,11 +4,12 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.qalegend.automationcore.Base;
 import com.qalegend.constants.ErrorMessages;
+import com.qalegend.constants.ExtentLogMessage;
+import com.qalegend.dataprovider.DataProviders;
 import com.qalegend.listeners.TestListener;
 import com.qalegend.pages.HomePage;
 import com.qalegend.pages.LoginPage;
 import com.qalegend.utilities.ExcelUtility;
-import com.qalegend.utilities.RandomUtility;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -27,9 +28,9 @@ public class LoginTest extends Base {
         String expHomePageTitle = data.get(1).get(0);
         login = new LoginPage(driver);
         String actualHomePageTitle = login.getLoginPageTitle();
-        extentTest.get().log(Status.PASS, "Login page title received");
+        extentTest.get().log(Status.PASS, ExtentLogMessage.LOGIN_PAGE_RECEIVED);
         Assert.assertEquals(actualHomePageTitle, expHomePageTitle, ErrorMessages.TITLE_FAILURE_MESSAGE);
-        extentTest.get().log(Status.PASS, "Expected login page title match with actual login page title");
+        extentTest.get().log(Status.PASS, ExtentLogMessage.TITLE_MATCH_WITH_ACTUAL_TITLE);
     }
 
     @Test(priority = 1, description = "TC002_Verify valid login",groups = {"Regression"})
@@ -45,23 +46,21 @@ public class LoginTest extends Base {
         String actUserName = home.getUserAccountNameText();
         String expUserName = data.get(1).get(3);
         Assert.assertEquals(actUserName, expUserName, ErrorMessages.USERNAME_FAILURE_MESSAGE);
-        extentTest.get().log(Status.PASS, "Expected username match with actual username");
+        extentTest.get().log(Status.PASS, ExtentLogMessage.SIGNIN_SUCCESS_MESSAGE);
     }
 
-    @Test(priority = 1, description = "TC003_Verify invalid login",groups = {"Regression"})
-    public void TC003_verifyInValidLoginErrorMessage() {
+    @Test(priority = 1, description = "TC003_Verify invalid login",dataProvider = "InvalidUserCredentials", dataProviderClass = DataProviders.class, groups = {"Regression"})
+    public void TC003_verifyInValidLoginErrorMessage(String username,String password) {
         extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
-        String fName = RandomUtility.getfName();
-        String password = fName + "@123";
         login = new LoginPage(driver);
-        login.enterUserName(fName);
+        login.enterUserName(username);
         login.enterUserPassword(password);
-        login.clickLoginButton();
+        login.loginButtonClick();
         String expectedErrorMessage = data.get(1).get(4);
         String actualErrorMessage = login.getErrorMessageText();
-        Assert.assertEquals(actualErrorMessage, expectedErrorMessage, ErrorMessages.USERNAME_FAILURE_MESSAGE);
-        extentTest.get().log(Status.PASS, "Expected username match with actual username");
+        Assert.assertEquals(actualErrorMessage, expectedErrorMessage, ErrorMessages.INVALID_ERROR_MESSAGE);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.LOGIN_FAILED_MESSAGE);
     }
 
     @Test(priority = 1, description = "TC004_Verify click on remember me check box",groups = {"Regression"})
@@ -69,5 +68,8 @@ public class LoginTest extends Base {
         extentTest.get().assignCategory("Regression");
         login = new LoginPage(driver);
         login.clickOnRememberMeButton();
+        Boolean status=login.checkRememberMeCheckBoxSelected();
+        Assert.assertTrue(status,ErrorMessages.CHECKBOX_NOT_SELECTED);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.CHECK_BOX_CLICKED_SUCCESSFULLY);
     }
 }

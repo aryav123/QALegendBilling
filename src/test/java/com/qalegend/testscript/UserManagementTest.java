@@ -33,7 +33,6 @@ public class UserManagementTest extends Base {
         login.enterUserPassword(Password);
         login.clickOnRememberMeButton();
         home = login.clickLoginButton();
-        home.clickOnEndTourButton();
         userManagement = home.clickOnTheUserManagementMenu();
         Boolean userMenuStatus = userManagement.userMenuIsDisplayed();
         Assert.assertTrue(userMenuStatus, ErrorMessages.USER_SUB_MENU_NOT_FOUND_MESSAGE);

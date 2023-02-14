@@ -15,19 +15,20 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddUserTest extends Base {
+public class EditUserTest extends Base {
     LoginPage login;
-    HomePage home;
     UserManagementPage userManagement;
+    HomePage home;
     UsersPage user;
     AddUserPage adduser;
+    EditUserPage edituser;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
-    @Test(priority = 1, description = "TC015 verify Add user page title", groups = {"Regression"})
-    public void TC015_verifyAddUserTitle() {
+    @Test(priority = 1, description = "TC017 verify Edit user page title", groups = {"Regression"})
+    public void TC017_verifyEditUserTitle() {
         extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
-        List<ArrayList<String>> addUserData = ExcelUtility.excelDataReader("AddUser");
-        String expAddUserPageTitle = addUserData.get(1).get(3);
+        List<ArrayList<String>> editUserData = ExcelUtility.excelDataReader("EditUserPage");
+        String expEditUserPageTitle = editUserData.get(1).get(0);
         String UserName = loginData.get(1).get(1);
         String Password = loginData.get(1).get(2);
         login = new LoginPage(driver);
@@ -37,13 +38,14 @@ public class AddUserTest extends Base {
         home = login.clickLoginButton();
         userManagement = home.clickOnTheUserManagementMenu();
         user = userManagement.clickOnUsersMenu();
-        adduser=user.clickOnAddButton();
-        String actualAddUserPageTitle = adduser.getAddUserPageTitle();
-        Assert.assertEquals(actualAddUserPageTitle, expAddUserPageTitle, ErrorMessages.TITLE_FAILURE_MESSAGE);
+        user.enterSearchValue(UserName);
+        edituser=user.clickOnEditButton();
+        String actualEditUserPageTitle = edituser.getEditUserPageTitle();
+        Assert.assertEquals(actualEditUserPageTitle, expEditUserPageTitle, ErrorMessages.TITLE_FAILURE_MESSAGE);
         extentTest.get().log(Status.PASS, ExtentLogMessage.USERS_TITLE_VALIDATION_MESSAGE);
     }
-    @Test(priority = 1,description = "TC016 Verify users can add user details",groups = {"Regression"})
-    public void TC016_verifyUsersCanAddUserDetails() {
+    @Test(priority = 1, description = "TC018 verify user can edit user details", groups = {"Regression"})
+    public void TC018_verifyUserCanEditUserDetails() {
         extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
         String userName = loginData.get(1).get(1);
@@ -75,6 +77,14 @@ public class AddUserTest extends Base {
         adduser.clickSaveButton();
         user.enterSearchValue(email);
         user.getTableContent(email);
-        extentTest.get().log(Status.PASS, ExtentLogMessage.USERS_ADDED_VALIDATION_MESSAGE);
+        edituser=user.clickOnEditButton();
+        edituser.editFirstName(fName);
+        edituser.editLastName(lName);
+        edituser.editPassword(userPassword);
+        edituser.editConfirmPassword(userPassword);
+        edituser.clickSaveButton();
+        user.enterSearchValue(email);
+        user.getTableContent(email);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.USERS_EDITED_VALIDATION_MESSAGE);
     }
 }

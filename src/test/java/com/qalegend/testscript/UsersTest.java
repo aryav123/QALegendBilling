@@ -9,6 +9,7 @@ import com.qalegend.listeners.TestListener;
 import com.qalegend.pages.*;
 import com.qalegend.utilities.ExcelUtility;
 import com.qalegend.utilities.RandomUtility;
+import org.openqa.selenium.Alert;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -38,7 +39,6 @@ public class UsersTest extends Base {
         login.enterUserPassword(Password);
         login.rememberMeCheckBoxClick();
         home = login.clickLoginButton();
-        home.clickOnEndTourButton();
         userManagement = home.clickOnTheUserManagementMenu();
         user = userManagement.clickOnUsersMenu();
         String actUserPageTitle = user.getUsersPageTitle();
@@ -65,7 +65,6 @@ public class UsersTest extends Base {
         login.enterUserPassword(password);
         login.rememberMeCheckBoxClick();
         home = login.clickLoginButton();
-        home.clickOnEndTourButton();
         userManagement = home.clickOnTheUserManagementMenu();
         user = userManagement.clickOnUsersMenu();
         adduser=user.clickOnAddButton();
@@ -80,6 +79,8 @@ public class UsersTest extends Base {
         adduser.clickSaveButton();
         user.enterSearchValue(email);
         user.getTableContent(email);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.EMAIL_MATCHED);
+
     }
     @Test(priority = 1,description = "TC012 Verify users search with invalid Data",groups = {"Regression"})
     public void TC012_verifyUsersSearchWithInValidData() {
@@ -94,13 +95,13 @@ public class UsersTest extends Base {
         login.enterUserPassword(password);
         login.rememberMeCheckBoxClick();
         home = login.clickLoginButton();
-        home.clickOnEndTourButton();
         userManagement = home.clickOnTheUserManagementMenu();
         user = userManagement.clickOnUsersMenu();
         String email=RandomUtility.getRandomEmail();
         user.enterSearchValue(email);
         String actEmptyTableMessage = user.getNoRecordsFoundMessage();
-        Assert.assertEquals(actEmptyTableMessage, expEmptyTableMessage, ErrorMessages.TITLE_FAILURE_MESSAGE);
+        Assert.assertEquals(actEmptyTableMessage, expEmptyTableMessage, ErrorMessages.NO_RECORDS_FOUND);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.NO_RECORDS_FOUND_MESSAGE);
     }
     @Test(priority = 1,description = "TC013 Verify field validation messages without filling mandatory fields",groups = {"Regression"})
     public void TC013_verifyAddFieldValidationMessageWithoutFillingMandatoryFields() {
@@ -122,7 +123,6 @@ public class UsersTest extends Base {
         login.enterUserPassword(password);
         login.rememberMeCheckBoxClick();
         home = login.clickLoginButton();
-        home.clickOnEndTourButton();
         userManagement = home.clickOnTheUserManagementMenu();
         user = userManagement.clickOnUsersMenu();
         adduser=user.clickOnAddButton();
@@ -137,6 +137,7 @@ public class UsersTest extends Base {
         adduser.clickSaveButton();
         String actValidationMessage=adduser.firstNameFieldValidation();
         Assert.assertEquals(actValidationMessage, expValidationMessage, ErrorMessages.INVALID_FAILURE_MESSAGE);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.VALIDATION_MESSAGE_DISPLAYED);
     }
     @Test(priority = 1,description = "TC014 Verify user login with newly added user",groups = {"Regression"})
         public void TC014_verifyUsersLoginWithNewlyAddedUser() {
@@ -158,7 +159,6 @@ public class UsersTest extends Base {
         login.enterUserPassword(password);
         login.rememberMeCheckBoxClick();
         home = login.clickLoginButton();
-        home.clickOnEndTourButton();
         userManagement = home.clickOnTheUserManagementMenu();
         user = userManagement.clickOnUsersMenu();
         adduser=user.clickOnAddButton();
@@ -183,5 +183,44 @@ public class UsersTest extends Base {
         login.rememberMeCheckBoxClick();
         home = login.clickLoginButton();
         extentTest.get().log(Status.PASS, ExtentLogMessage.SIGNIN_SUCCESS_MESSAGE);
+    }
+    @Test(priority = 1,description = "TC019 Verify users can delete a user",groups = {"Regression"})
+    public void TC019_verifyUsersCanDeleteAUser() {
+        extentTest.get().assignCategory("Regression");
+        List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
+        String userName = loginData.get(1).get(1);
+        String password = loginData.get(1).get(2);
+        List<ArrayList<String>> UsersData = ExcelUtility.excelDataReader("AddUser");
+        String userPrefix = UsersData.get(1).get(0);
+        String noRecordsfoundText=UsersData.get(1).get(3);
+        String fName = RandomUtility.getfName();
+        String lName = RandomUtility.getlName();
+        String email=RandomUtility.getRandomEmail();
+        String username=fName+lName;
+        String userPassword = fName + "@123";
+        String percentage=UsersData.get(1).get(1);
+        login = new LoginPage(driver);
+        login.enterUserName(userName);
+        login.enterUserPassword(password);
+        login.rememberMeCheckBoxClick();
+        home = login.clickLoginButton();
+        userManagement = home.clickOnTheUserManagementMenu();
+        user = userManagement.clickOnUsersMenu();
+        adduser=user.clickOnAddButton();
+        adduser.enterPrefix(userPrefix);
+        adduser.enterFirstName(fName);
+        adduser.enterLastName(lName);
+        adduser.enterEmail(email);
+        adduser.enterUsername(username);
+        adduser.enterPassword(userPassword);
+        adduser.enterConfirmPassword(userPassword);
+        adduser.enterPercentage(percentage);
+        adduser.clickSaveButton();
+        user.enterSearchValue(email);
+        user.getTableContent(email);
+        user.clickOnDeleteButton();
+        user.clickOnOkButton();
+        user.getTableContent(noRecordsfoundText);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.USERS_DELETED_VALIDATION_MESSAGE);
     }
 }

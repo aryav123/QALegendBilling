@@ -46,10 +46,10 @@ public class ExcelUtility {
         }
         return excelRows;
     }
-    public  Object[][] dataProviderRead(String sheetName) {
+    public  static Object[][] dataProviderRead(String sheetName) {
         DataFormatter formatter = new DataFormatter();
         try {
-            f = new FileInputStream(System.getProperty("user.dir") + Constants.EXCEL_PATH);
+            f = new FileInputStream(System.getProperty("user.dir") + Constants.EXCEL_PATH_DATA_PROVIDER);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

@@ -16,9 +16,7 @@ public class HomePage extends TestHelper {
     private final String _userAccountNameField = "//a[@class='dropdown-toggle']";
     @FindBy(xpath = _userAccountNameField)
     private WebElement userAccountNameField;
-    private final String _endTourButton="//button[@class='btn btn-default btn-sm']";
-    @FindBy(xpath = _endTourButton)
-    private WebElement endTourButton;
+
     private final String _dateDisplayed="//div[@class='m-8 pull-left mt-15 hidden-xs']//strong";
     @FindBy(xpath = _dateDisplayed) private WebElement dateDisplayed;
     private final String _usernameDisplayed="//a[@class='dropdown-toggle']//span";
@@ -35,10 +33,6 @@ public class HomePage extends TestHelper {
     public String getHomePageTitle() {
         String title = page.getPageTitle(driver);
         return title;
-    }
-    public void  clickOnEndTourButton(){
-        page.clickOnElement(endTourButton);
-        wait.setHardWait();
     }
     public String getDate(){
         String date=page.getElementText(dateDisplayed);

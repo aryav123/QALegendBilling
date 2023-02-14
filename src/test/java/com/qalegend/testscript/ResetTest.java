@@ -1,8 +1,10 @@
 package com.qalegend.testscript;
 
 import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import com.qalegend.automationcore.Base;
 import com.qalegend.constants.ErrorMessages;
+import com.qalegend.constants.ExtentLogMessage;
 import com.qalegend.listeners.TestListener;
 import com.qalegend.pages.HomePage;
 import com.qalegend.pages.LoginPage;
@@ -31,5 +33,6 @@ public class ResetTest extends Base {
         reset.resetEmailButtonClick();
         String actualInvalidEmailErrorMessage= reset.getInvalidResetEmailText();
         Assert.assertEquals(actualInvalidEmailErrorMessage,expectedInvalidEmailErrorMessage, ErrorMessages.INVALID_EMAIL_ID);
+        extentTest.get().log(Status.PASS, ExtentLogMessage.CLICKED_FORGOT_PASSWORD_LINK_SUCCESSFULLY);
     }
 }

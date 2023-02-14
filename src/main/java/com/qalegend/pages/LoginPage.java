@@ -33,6 +33,9 @@ public class LoginPage extends TestHelper {
     private final String _forgotPasswordLink = "//a[@class='btn btn-link']";
     @FindBy(xpath = _forgotPasswordLink)
     private WebElement forgotPasswordLink;
+    private final String _endTourButton="//button[@class='btn btn-default btn-sm']";
+    @FindBy(xpath = _endTourButton)
+    private WebElement endTourButton;
 
     public String getLoginPageTitle() {
         String title = page.getPageTitle(driver);
@@ -46,9 +49,13 @@ public class LoginPage extends TestHelper {
     public void enterUserPassword(String password) {
         page.enterText(passwordField, password);
     }
+    public void loginButtonClick() {
+        page.submitElement(loginButton);
+    }
 
     public HomePage clickLoginButton() {
         page.submitElement(loginButton);
+        page.clickOnElement(endTourButton);
         return new HomePage(driver);
     }
     public void clickOnRememberMeButton() {
@@ -57,6 +64,10 @@ public class LoginPage extends TestHelper {
 
     public String getErrorMessageText(){
         String accountNameText=page.getElementText(invalidLoginErrorMessageField);
+        return accountNameText;
+    }
+    public Boolean checkRememberMeCheckBoxSelected(){
+        Boolean accountNameText=page.isSelected(rememberMeCheckBox);
         return accountNameText;
     }
     public ResetPage clickForgotPasswordButton(){

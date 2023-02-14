@@ -27,6 +27,15 @@ public class UsersPage extends TestHelper {
     private final String _emptyTableData="//td[@class='dataTables_empty']";
     @FindBy(xpath = _emptyTableData) private WebElement emptyTableData;
 
+    private final String _editButton="//a[@class='btn btn-xs btn-primary']";
+    @FindBy(xpath = _editButton) private WebElement editButton;
+    private final String _deleteButton="//button[@class='btn btn-xs btn-danger delete_user_button']";
+    @FindBy(xpath = _deleteButton) private WebElement deleteButton;
+    private final String _viewButton="//a[@class='btn btn-xs btn-info']";
+    @FindBy(xpath = _viewButton) private WebElement viewButton;
+    private final String _okButton="//button[@class='swal-button swal-button--confirm swal-button--danger']";
+    @FindBy(xpath = _okButton) private WebElement okButton;
+
     public String getUsersPageTitle(){
         String title=page.getPageTitle(driver);
         return  title;
@@ -34,6 +43,20 @@ public class UsersPage extends TestHelper {
     public AddUserPage clickOnAddButton(){
         page.clickOnElement(addButton);
         return new AddUserPage(driver);
+    }
+    public EditUserPage clickOnEditButton(){
+        page.clickOnElement(editButton);
+        return new EditUserPage(driver);
+    }
+    public void clickOnDeleteButton(){
+        page.clickOnElement(deleteButton);
+    }
+    public ViewUserPage clickOnViewButton(){
+        page.clickOnElement(viewButton);
+        return new ViewUserPage(driver);
+    }
+    public void clickOnOkButton(){
+        page.clickOnElement(okButton);
     }
     public void enterSearchValue(String email) {
         wait.setHardWait();
@@ -51,6 +74,7 @@ public class UsersPage extends TestHelper {
                 }
             }
         }
+
     }
     public String getNoRecordsFoundMessage() {
         wait.setHardWait();

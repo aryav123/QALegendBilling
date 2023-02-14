@@ -1,10 +1,8 @@
 package com.qalegend.testscript;
 
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
 import com.qalegend.automationcore.Base;
 import com.qalegend.constants.ErrorMessages;
-import com.qalegend.constants.ExtentLogMessage;
 import com.qalegend.listeners.TestListener;
 import com.qalegend.pages.*;
 import com.qalegend.utilities.ExcelUtility;
@@ -15,41 +13,24 @@ import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddUserTest extends Base {
+public class ViewUsersTest extends Base {
     LoginPage login;
     HomePage home;
     UserManagementPage userManagement;
     UsersPage user;
+    ViewUserPage viewuser;
     AddUserPage adduser;
+    SignoutPage signout;
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
-    @Test(priority = 1, description = "TC015 verify Add user page title", groups = {"Regression"})
-    public void TC015_verifyAddUserTitle() {
-        extentTest.get().assignCategory("Regression");
-        List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
-        List<ArrayList<String>> addUserData = ExcelUtility.excelDataReader("AddUser");
-        String expAddUserPageTitle = addUserData.get(1).get(3);
-        String UserName = loginData.get(1).get(1);
-        String Password = loginData.get(1).get(2);
-        login = new LoginPage(driver);
-        login.enterUserName(UserName);
-        login.enterUserPassword(Password);
-        login.rememberMeCheckBoxClick();
-        home = login.clickLoginButton();
-        userManagement = home.clickOnTheUserManagementMenu();
-        user = userManagement.clickOnUsersMenu();
-        adduser=user.clickOnAddButton();
-        String actualAddUserPageTitle = adduser.getAddUserPageTitle();
-        Assert.assertEquals(actualAddUserPageTitle, expAddUserPageTitle, ErrorMessages.TITLE_FAILURE_MESSAGE);
-        extentTest.get().log(Status.PASS, ExtentLogMessage.USERS_TITLE_VALIDATION_MESSAGE);
-    }
-    @Test(priority = 1,description = "TC016 Verify users can add user details",groups = {"Regression"})
-    public void TC016_verifyUsersCanAddUserDetails() {
-        extentTest.get().assignCategory("Regression");
+    @Test(priority = 1,description = "TC020 Verify the details displayed on view user page",groups = {"Smoke"})
+    public void TC020_verifyUsersDetails() {
+        extentTest.get().assignCategory("Smoke");
         List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
         String userName = loginData.get(1).get(1);
         String password = loginData.get(1).get(2);
         List<ArrayList<String>> UsersData = ExcelUtility.excelDataReader("AddUser");
         String userPrefix = UsersData.get(1).get(0);
+        String userRole=UsersData.get(1).get(5);
         String fName = RandomUtility.getfName();
         String lName = RandomUtility.getlName();
         String email=RandomUtility.getRandomEmail();
@@ -75,6 +56,12 @@ public class AddUserTest extends Base {
         adduser.clickSaveButton();
         user.enterSearchValue(email);
         user.getTableContent(email);
-        extentTest.get().log(Status.PASS, ExtentLogMessage.USERS_ADDED_VALIDATION_MESSAGE);
+        viewuser = user.clickOnViewButton();
+        String viewEmailIdText= viewuser.getEmailID();
+        String viewRoleText= viewuser.getRole();
+        String viewUserNameText= viewuser.getUserName();
+        Assert.assertEquals(viewEmailIdText, email, ErrorMessages.INVALID_TEXT_FOUND);
+        Assert.assertEquals(viewRoleText, userRole, ErrorMessages.INVALID_TEXT_FOUND);
+        Assert.assertEquals(viewUserNameText, username, ErrorMessages.INVALID_TEXT_FOUND);
     }
 }

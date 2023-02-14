@@ -2,7 +2,9 @@ package com.qalegend.constants;
 
 public class ErrorMessages {
     public static final String TITLE_FAILURE_MESSAGE= "ERROR: Invalid page title found";
+    public static final String CHECKBOX_NOT_SELECTED= "ERROR: Check box is not selected";
     public static final String INVALID_FAILURE_MESSAGE= "ERROR: Invalid failure message found";
+    public static final String INVALID_TEXT_FOUND= "ERROR: Invalid text found";
     public static final String USERNAME_FAILURE_MESSAGE= "ERROR: Invalid username found";
     public static final String SUBSCRIBE_FAILURE_MESSAGE="ERROR : Invalid Subscribe Message Found";
     public static final String INVALID_EMAIL_ID="ERROR: Invalid Email Id";

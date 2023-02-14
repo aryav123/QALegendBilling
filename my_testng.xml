@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="My testng Suite">
+    <listeners>
+        <listener class-name="com.qalegend.listeners.TestListener"/>
+    </listeners>
+    <test name="Parameter testing - Grouping">
+        <parameter name="browser" value="chrome"/>
+        <groups>
+            <run>
+                <include name="Regression"/>
+                <exclude name="Sanity"/>
+                <include name="Smoke"/>
+            </run>
+        </groups>
+        <classes>
+<!--                <class name="com.qalegend.testscript.HomeTest"/>-->
+<!--                <class name="com.qalegend.testscript.LoginTest"/>-->
+<!--                <class name="com.qalegend.testscript.ResetTest"/>-->
+                <class name="com.qalegend.testscript.SignoutTest"/>
+<!--                <class name="com.qalegend.testscript.UserManagementTest"/>-->
+<!--                <class name="com.qalegend.testscript.UsersTest"/>-->
+<!--                <class name="com.qalegend.testscript.AddUserTest"/>-->
+<!--                <class name="com.qalegend.testscript.EditUserTest"/>-->
+<!--                <class name="com.qalegend.testscript.ViewUsersTest"/>-->
+<!--                <class name="com.qalegend.testscript.RolesTest"/>-->
+        </classes>
+    </test>
+</suite>
