@@ -22,7 +22,7 @@ public class LoginTest extends Base {
     ThreadLocal<ExtentTest> extentTest = TestListener.getTestInstance();
 
     @Test(priority = 1, description = "TC001_Verify Login page title",groups = {"Regression"})
-    public void TC001_verifyLoginPageTitle() {
+    public void TC001_verifyLoginPageTitle001() {
         extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> data = ExcelUtility.excelDataReader("LoginPage");
         String expHomePageTitle = data.get(1).get(0);
