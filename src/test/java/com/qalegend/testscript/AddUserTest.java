@@ -44,6 +44,7 @@ public class AddUserTest extends Base {
     }
     @Test(priority = 1,description = "TC016 Verify users can add user details",groups = {"Regression"})
     public void TC016_verifyUsersCanAddUserDetails() {
+//        extentTest.get().assignCategory("Regression");
         extentTest.get().assignCategory("Regression");
         List<ArrayList<String>> loginData = ExcelUtility.excelDataReader("LoginPage");
         String userName = loginData.get(1).get(1);
